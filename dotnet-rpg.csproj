@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -15,10 +16,14 @@
     <None Remove="Models\" />
     <None Remove="Services\" />
     <None Remove="Services\CharacterService\" />
+    <None Remove="Dtos\" />
+    <None Remove="Dtos\Character\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Services\CharacterService\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Dtos\Character\" />
   </ItemGroup>
 </Project>
