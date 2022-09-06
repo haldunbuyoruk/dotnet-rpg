@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace dotnet_rpg.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/character")]
     public class CharacterController : ControllerBase
     {
         private readonly ICharacterService _characterService;
@@ -21,25 +21,26 @@ namespace dotnet_rpg.Controllers
             _characterService = characterService;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("list")]
         public async Task<ActionResult<List<ServiceResponse<GetCharacterDto>>>> Get()
         {
             return Ok(await _characterService.GetAllCharacters());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("detail/{id}")]
         public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> GetSingle(int id)
         {
+            //check id 
             return Ok(await _characterService.GetCharacterById(id));
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> AddCharacter(AddCharacterDto newCharacter)
         {
             return Ok(await _characterService.AddCharacter(newCharacter));
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> DeleteCharacter(int id)
         {
             var response = await _characterService.DeleteCharacter(id);
@@ -51,7 +52,7 @@ namespace dotnet_rpg.Controllers
             return Ok(response);
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> UpdateCharacter(UpdateCharacterDto updatedCharacter)
         {
             var response = await _characterService.UpdateCharacter(updatedCharacter);

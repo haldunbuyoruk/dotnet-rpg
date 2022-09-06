@@ -1,9 +1,9 @@
-﻿using System;
+﻿using dotnet_rpg.Models;
+
 namespace dotnet_rpg.Dtos.Character
 {
     public class AddCharacterDto
     {
-        public int Id { get; set; }
 
         public string Name { get; set; } = "Player";
 
